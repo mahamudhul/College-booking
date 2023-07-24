@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import img from '../../assets/undraw_login_re_4vu2 (1).svg'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogIn from '../../Components/SocialLogIn';
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 
 
@@ -13,6 +15,37 @@ import SocialLogIn from '../../Components/SocialLogIn';
 const Login = () => {
 
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
+    const { signInUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+
+
+    const from = location.state?.from?.pathname || "/";
+
+
+    const onSubmit = data => {
+        console.log(data)
+
+        signInUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                reset()
+                Swal.fire({
+                    title: 'User Log In Successfully',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(from, { replace: true });
+            })
+            .then(error => console.log(error))
+    }
+
 
 
     return (
@@ -27,7 +60,7 @@ const Login = () => {
                     {/* ---Form-- */}
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  bg-slate-400">
                         <p className="text-3xl font-bold m-5 text-center">Login now!</p>
-                        <form  className="card-body">
+                        <form onSubmit={handleSubmit(onSubmit)} className="card-body">
 
                             <div className="form-control">
                                 <label className="label">
@@ -43,17 +76,13 @@ const Login = () => {
                                 </label>
 
 
-                                {/* <div>
-                                    <input type={passwordVisible ? 'text' : 'password'}
+                                <div>
+                                    <input type='password'
                                         {...register("password", { required: true, minLength: 6 })} placeholder="password" className="input input-bordered" />
-                                    <span className='inline-block  -ml-10' onClick={togglePasswordVisibility}>
-                                        {passwordVisible ? (
-                                            <BsEyeSlashFill className='text-2xl'></BsEyeSlashFill >
-                                        ) : (
-                                            <BsEyeFill className='text-2xl'></BsEyeFill>
-                                        )}
+                                    <span className='inline-block  -ml-10' >
+
                                     </span>
-                                </div> */}
+                                </div>
                             </div>
 
                             <div className="form-control mt-6">

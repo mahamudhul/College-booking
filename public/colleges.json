@@ -1,0 +1,68 @@
+[
+    {
+        "_id": 1,
+        "image": "https://i.ibb.co/dtjbWTP/college1.jpg",
+        "name": "Imperial College London",
+        "rating": 4.5,
+        "date": " August 15 - August 31",
+        "research_count": 120,
+        "history":"Established in 1920, pioneering research in various fields",
+        "event": " August 23 - Freshers' Welcome Party",
+        "sports": "Football, Basketball, Volleyball, and more."
+    },
+    {
+        "_id": 2,
+        "image": "https://i.ibb.co/r68CMxm/college3.jpg",
+        "name": "Harvard University",
+        "rating": 4.2,
+        "date": "September 1 - September 15",
+        "research_count": 130,
+        "history":"Leading in scientific breakthroughs since 1945.",
+        "event": "September 8 - Career Fair",
+        "sports": "Soccer, Tennis, Swimming, Football and more."
+    },
+    {
+        "_id": 3,
+        "image": "https://i.ibb.co/BgDpW1n/college6.jpg",
+        "name": "Stanford University",
+        "rating": 4.0,
+        "date": "July 1 - July 31",
+        "research_count": 130,
+        "history":"Celebrating 100 years of academic excellence",
+        "event": "July 15 - Annual Alumni Reunion",
+        "sports": "Tennis, Swimming, Football and more"
+    },
+    {
+        "_id": 4,
+        "image": "https://i.ibb.co/BgDpW1n/college6.jpg",
+        "name": "Yale University",
+        "rating": 4.0,
+        "date": "July 1 - July 31",
+        "research_count": 130,
+        "history":"Sustainable Architecture",
+        "event": "November 8 - Career Fair",
+        "sports": "Hockey, Swimming, Basketball and more"
+    },
+    {
+        "_id": 5,
+        "image": "https://i.ibb.co/b2SNKs0/college5.jpg",
+        "name": "Princeton University",
+        "rating": 4.0,
+        "date": "July 1 - July 31",
+        "research_count": 130,
+        "history":"Established in 1920, pioneering research in various fields",
+        "event": "March 23 - Freshers' Welcome Party",
+        "sports": "Football, Basketball, Volleyball, and more"
+    },
+    {
+        "_id": 6,
+        "image": "https://i.ibb.co/JtcfxZ7/college4.webp",
+        "name": "University of Cambridge",
+        "rating": 4.5,
+        "date": "July 1 - July 31",
+        "research_count": 100,
+        "history":"Environmental Science",
+        "event": "July 15 - Annual Party",
+        "sports": "Cricket, Swimming, Tennis and more"
+    }
+]

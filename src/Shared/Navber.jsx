@@ -1,9 +1,23 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../Provider/AuthProvider';
+
+
 
 const Navber = () => {
+    const { user, logOut } = useContext(AuthContext)
+    // console.log(user.photoURL)
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .then(error => console.log(error))
+    }
+
+
     return (
-        <div className="flex justify-around navbar  bg-slate-400 p-5 ">
+        <div className="flex justify-around navbar  bg-slate-400 p-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -12,8 +26,9 @@ const Navber = () => {
                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
 
                         <li><NavLink to='/'>Home</NavLink></li>
-                        <li><NavLink to='/'>Instructors</NavLink></li>
-                        <li><NavLink to='/'>Classes</NavLink></li>
+                        <li><NavLink to='/college'>Colleges</NavLink></li>
+                        <li><NavLink to='/admission'>Admission</NavLink></li>
+                        <li><NavLink to='/my-college'>My college</NavLink></li>
                         <li><NavLink to='/login'>Login </NavLink></li>
                         <li><NavLink to='/register'>Register</NavLink></li>
                     </ul>
@@ -26,8 +41,9 @@ const Navber = () => {
                 <ul className="menu menu-horizontal px-1">
 
                     <li><NavLink to='/'>Home</NavLink></li>
-                    <li><NavLink to='/'>Instructors</NavLink></li>
-                    <li><NavLink to='/'>Classes</NavLink></li>
+                    <li><NavLink to='/college'>Colleges</NavLink></li>
+                    <li><NavLink to='/admission'>Admission</NavLink></li>
+                    <li><NavLink to='/my-college'>My college</NavLink></li>
                     <li><NavLink to='/login'>Login </NavLink></li>
                     <li><NavLink to='/register'>Register</NavLink></li>
 
@@ -37,7 +53,7 @@ const Navber = () => {
 
             <div className="dropdown dropdown-end mx-5">
                 <label tabIndex={0} className='btn btn-ghost btn-circle '>
-                    {/* {
+                    {
                         user ?
                             <>
                                 <div className='w-10 rounded-full'>
@@ -46,12 +62,12 @@ const Navber = () => {
                             </> : <>
                                 <NavLink to='/login'><button className="btn btn-active btn-accent">Login</button></NavLink>
                             </>
-                    } */}
-                    <NavLink to='/login'><button className="btn btn-active btn-accent">Login</button></NavLink>
+                    }
+                    {/* <NavLink to='/login'><button className="btn btn-active btn-accent">Login</button></NavLink> */}
                 </label>
-                {/* {user && <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                {user && <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                     <button onClick={handleLogOut} className="btn btn-accent">Logout</button>
-                </ul>} */}
+                </ul>}
             </div>
         </div>
     );

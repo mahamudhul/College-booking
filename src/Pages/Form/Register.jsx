@@ -1,18 +1,41 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useContext } from 'react';
 import SocialLogIn from '../../Components/SocialLogIn';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import img from '../../assets/undraw_welcome_re_h3d9 (1).svg'
+import { AuthContext } from '../../Provider/AuthProvider';
 
 
 
 const Register = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext)
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate();
+
+
+
 
     const onSubmit = data => {
         console.log(data)
 
+        createUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+
+                updateUserProfile(data.name, data.photoUrl)
+                    .then(() => {
+
+                    })
+                    .catch((error) => {
+
+                    })
+                navigate('/');
+            })
+            .then(error => {
+                console.log(error)
+            });
     }
 
 
@@ -61,9 +84,9 @@ const Register = () => {
                                 </label>
                                 <input type="password" {...register("password", { required: true, minLength: 6 })} placeholder="password" className="input input-bordered" />
 
-                                {errors.password?.type === 'required' && <p className='text-red-500'>password is required</p>}
+                                {/* {errors.password?.type === 'required' && <p className='text-red-500'>password is required</p>} */}
 
-                                {errors.password?.type === 'minLength' && <p className='text-red-500'>password  must be 6 cherecters</p>}
+                                {/* {errors.password?.type === 'minLength' && <p className='text-red-500'>password  must be 6 cherecters</p>} */}
 
                             </div>
 
